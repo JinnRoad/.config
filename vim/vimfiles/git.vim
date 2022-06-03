@@ -10,4 +10,5 @@ nnoremap \gl    :!git log --graph -10 --pretty=format:'\%Cred\%h\%Creset \%Cgree
 
 function! GitChanges()
     let x = system('git status --porcelain &')
+    echo x
 endfunction
