@@ -19,30 +19,29 @@ nnoremap <c-k> :cp<cr>zz
 " Copy directory or path
 command! CopyDirPath  execute 'let @*="' . TildaPath(expand('%:p:h')) . '"'
 command! CopyFilePath execute 'let @*="' . TildaPath(expand('%:p'))   . '"'
-"/c/Users/user/.config/vim/vimfiles/paths.vim
-" Convert filepaths between unix and windows
 
 function! TildaPath(path)
     let path = a:path
     let path = substitute(path, '^/home/' . g:user, '~', '')
     let path = substitute(path, '^/c/Users/' . g:user, '~', '')
     let path = substitute(path, '^C:\Users\' . g:user, '~', '')
+    echo path
     return path
 endfunction
 
+" Convert filepath on system register between unix and windows
 command! ConvertPath call ConvertPath()
 function ConvertPath()
-    normal mz0
-    if search('/', '', line('.'))
-        silent! s;/c/;C:\
-        s;/;\
-    elseif search('\\', '', line('.'))
-        silent! s;C:\\;/c/
-        s;\\;/
+    if stridx(@*, '/') > -1
+        let @* = substitute(@*, '/c/', 'C:\', 'g')
+        let @* = substitute(@*, '/', '\', 'g')
+    elseif stridx(@*, '\\') > -1
+        let @* = substitute(@*, 'C:\\', '/c/', 'g')
+        let @* = substitute(@*, '\\', '/', 'g')
     else
         echo 'Not a filepath'
     endif
-    normal `z
+    echo @*
 endfunction
 
 " Paste links to game dev resources file

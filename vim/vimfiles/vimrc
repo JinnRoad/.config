@@ -30,7 +30,7 @@ set nowrap
 "let g:vimfilesdir = g:userdir . '.config/vim/vimfiles/'
 let g:docsdir = '~/docs/'
 let g:vimfilesdir = '~/.config/vim/vimfiles/'
-let g:user = system('whoami')
+let g:user = trim(system('whoami'))
 
 " Shortcuts to make vim easier to configure
 let $MYVIMRC = g:vimfilesdir . 'vimrc'
