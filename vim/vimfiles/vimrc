@@ -1,0 +1,63 @@
+" in ~/.vimrc, write:
+" source ~/.config/vim/vimfiles/vimrc
+" or setup XDG directories (still unsure how to do this)
+
+" Basics
+set nocompatible " improve a variety of vim backend behaviors
+set autochdir  " Follow buffer directory
+set autoread  " Update files when they change
+set autowrite  " Autosave
+set autowriteall  " Autosave on buffer switch
+set number
+set relativenumber
+set nowrap
+
+"" Return string based on the OS.
+"function OsBasedStr()
+"    if has('win32unix') && has('unix')
+"        return '/c/'
+"    elseif has('unix')
+"        return '/'
+"    elseif has('win32unix')
+"        return 'C:\'
+"    endif
+"endfunction
+
+" Directory variables
+"let g:root = OsBasedStr()
+"let g:userdir = g:root . 'home/user/'
+"let g:docsdir = g:userdir . 'docs/'
+"let g:vimfilesdir = g:userdir . '.config/vim/vimfiles/'
+let g:docsdir = '~/docs/'
+let g:vimfilesdir = '~/.config/vim/vimfiles/'
+
+" Shortcuts to make vim easier to configure
+let $MYVIMRC = g:vimfilesdir . 'vimrc'
+cnoremap so<cr> :w<cr>:source $MYVIMRC<cr>
+cnoremap vi<cr> :cd ~/.config/vim/vimfiles/<cr>:e 
+
+" Source custom vimfiles location
+execute "set rtp+=" . g:vimfilesdir
+"runtime! **/*.vim
+"execute "set rtp=" . rtp_tmp
+"let rtp_tmp = &rtp
+
+"scriptnames
+let files = [
+    \ 'cosmetics.vim',
+    \ 'folds.vim',
+    \ 'ftdetect.vim',
+    \ 'git.vim',
+    \ 'misc.vim',
+    \ 'paths.vim',
+    \ 'saving.vim',
+    \ 'statusline.vim',
+    \ 'tabs.vim',
+    \ 'terminal.vim',
+    \ 'utilities.vim',
+    \ 'wordcount.vim',
+\]
+
+for file in files
+	execute 'source ' . g:vimfilesdir . file
+endfor

@@ -1,0 +1,30 @@
+class_name
+KinematicBody2D
+move_and_slide
+Vector2
+ZERO
+func _physics_process(delta: float) -> void:
+Input.get_action_strength()
+Input.is_action_just_pressed()
+is_on_floor()
+get_physics_process_delta_time
+is_action_just_released
+is_on_wall
+func _ready() -> void:
+set_physics_process()
+set_physics_process(false)
+PhysicsBody2D
+global_position.
+get_node
+queue_free()
+CollisionShape2D
+disabled
+Area2D
+onready
+PackedScene
+func _get_configuration_warning() -> String:
+onready var anim_player: AnimationPlayer = $'AnimationPlayer'
+animation_finished
+get_tree
+change_scene_to
+class_name

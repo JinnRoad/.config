@@ -1,0 +1,2 @@
+Configure a global git ignore file.
+git config --global core.excludesfile C:\root\docs\config\.gitignore_global

@@ -1,0 +1,13 @@
+Transparency=off
+OpaqueWhenFocused=yes
+CursorType=block
+ThemeFile=rosipov
+Font=Consolas
+FontHeight=10
+FontSmoothing=full
+BoldAsColour=no
+BoldAsFont=no
+AllowBlinking=no
+BellType=0
+Scrollbar=none
+Window=max

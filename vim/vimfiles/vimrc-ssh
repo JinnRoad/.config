@@ -1,0 +1,59 @@
+" Save settings
+set autoread  " Update files when they change
+set autowrite  " Autosave
+set autowriteall  " Autosave on buffer switch
+set nobackup " Keep backup files
+set noswapfile " Don't use swap files
+set undofile  " Create undo file
+
+" Save automatically
+augroup autosave
+	autocmd!
+	autocmd FocusLost	* silent! wa
+	autocmd BufLeave	* silent! wa
+augroup END
+
+set number
+set relativenumber
+
+" Tabs, whitespace, special characters
+" tab characters ¸¦»
+set tabstop=4 " Width of tab character
+set shiftwidth=4 " Width of > command
+set autoindent " Indent newlines properly
+set expandtab " Change tabs to spaces
+set backspace=indent,eol,start " Backspace works through boundaries
+set listchars=tab:¦\ ,trail:_,extends:>,precedes:<
+set list
+
+" Windows and panes
+set fillchars=vert:▏
+set splitbelow " Make new panes appear below
+set splitright " Make new panes appear to the right
+
+" Lines and columns
+set numberwidth=1 " Use smallest numbering gutter
+set colorcolumn=81 " Mark nth column. Write to the (n-1)th column
+set cursorline " Highlight current line
+set cursorcolumn " Highlight current column
+set number " Show line numbers
+set relativenumber " Show relative line numbers
+set scrolloff=0
+set nowrap
+
+" Colors and highlighting
+filetype plugin on
+syntax enable
+
+hi VertSplit	cterm=none
+
+let mapleader="\<SPACE>" " Maps leader key
+set gdefault " Replace has the global tag on by default
+set ignorecase " Case insensitive searching
+set incsearch " Highlights as you type a search term
+set lazyredraw " Increase macro speed by delaying screen redraw
+set nrformats-=octal " Allow <c-A> to work with leading zero numbers
+set smartcase " Case sensitive search if term has capitals
+set wildmenu " Cmdline tab competion shows all options
+set wildmode=full
+set omnifunc=syntaxcomplete#Complete

@@ -1,0 +1,13 @@
+# Put the following in ~/.inputrc
+#   $include ~/.config/bash/inputrc
+
+# Vim-like bindings
+set show-all-if-ambiguous on # Show matching
+"\C-d":complete
+"\C-i": menu-complete
+"\e[Z": menu-complete-backward
+"\C-p":history-search-backward # ssh<c-k> searches history beginning with ssh
+"\C-n":history-search-forward
+
+# none, visible or audible
+set bell-style visible

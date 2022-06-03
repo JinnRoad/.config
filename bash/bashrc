@@ -1,0 +1,90 @@
+# Place the follwing in ~/.bashrc
+# source ~/.config/bash/bashrc
+
+# TODO 20220217213212  bash change prompt to show git branch
+
+# Prompt
+#PS1='[\u@\h \W]\$ '  # default (?)
+PS1='\n__________ \W \$ '
+
+# Vim movement in shell prompt
+set -o vi
+bind -m vi-command 'Control-l: clear-screen'  # ^L to clear screen in vim normal mode
+bind -m vi-insert 'Control-l: clear-screen'  # ^L to clear screen in vim insert mode
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+# Tab behavior
+bind '"\t":menu-complete'  # Tab to cycle options
+bind 'set completion-ignore-case on'  # Ignore completion case
+
+
+# Aliases
+
+# Program
+alias ls='ls --color=auto'
+alias ll='ls -Al --color=auto'
+alias firefox='firefox --private-window'
+alias info='info --vi-keys'
+
+# Paths and files
+alias vimrc='vim ~/.config/vim/vimfiles/vimrc'
+alias bashrc='vim ~/.config/bash/bashrc'
+alias sob='source ~/.config/bash/bashrc && echo Source bashrc'
+alias con='cd ~/.config'
+alias docs='cd ~/docs'
+alias setup='vim ~/docs/tech/linux/setup.md'
+
+## Git
+eval "$(gh completion -s bash)" # autocomplete for gh, GitHub's CLI.
+alias gs='git status -bsu'
+alias ga='git add . && gl && gs' # Same as git add -A in git version 2.X
+alias gc='git commit -v'
+alias gp='git push'
+alias gac='git add . && git commit -v && gl'
+alias gacp='git add . && gc && gp && gl'
+alias gad='git add'
+alias gd='git diff'
+alias gl="git log --graph -10 --pretty=format:'%Cred%h%Creset %Cgreen%cs%Creset %C(bold blue)%an%Creset %s %C(yellow)%D%Creset'"
+
+# Directory marks
+#   mark NAME
+#   cd NAME
+function mark { export $1=`pwd`; }
+
+
+# OS-specific settings
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    :
+elif [[ "$OSTYPE" == "msys" ]]; then
+
+	# Paths
+    ## Python pip installed scripts
+    export PATH=$PATH:~/apps/scoop/apps/python/current/Scripts
+
+	# Fix git-bash hanging
+	## For more information:
+	##     https://stackoverflow.com/a/36530750
+	##     https://stackoverflow.com/a/32599341
+	##     https://sourceforge.net/p/msys2/tickets/32/
+	alias python='winpty python'
+	alias sqlite3='winpty sqlite3.exe'
+
+	# Get USB drive
+    # 2022-05-30 Not in use
+	for letter in {a..z} ; do
+		if [[ -e /$letter/autorun.inf ]]; then
+			export USB=$letter
+			break
+		fi
+	done
+
+    alias con='cd ~/.config && ls'
+    alias cur='cd ~/.config/current && ls'
+    alias pdfinvert='vim -S ~/.config/vim/vimfiles/scripts/sumatra-color-inversion.vim /c/apps/scoop/apps/sumatrapdf/current/SumatraPDF-settings.txt'
+    alias backup='powershell -c "Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass; ~\.config\scoop\backup.ps1"'
+
+else
+   	echo Bash has not been configured for this OS.
+fi

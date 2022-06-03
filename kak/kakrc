@@ -1,0 +1,9 @@
+# tab width
+set-option global tabstop 4
+# four space indent
+set-option global indentwidth 4
+# display status
+# set-option global ui-options ncurses_status_on_top=true
+# line numbers
+# add-highlighter global/ number-lines -hlcursor
+#set-option
