@@ -28,7 +28,7 @@ iwr get.scoop.sh -UseBasicParsing | iex
 scoop install git gh
 git config --global user.name $user
 git config --global user.email $user@gmail.com
-
+git config --global core.excludesfile ~/.config/git/gitignore_global
 
 # Load ssh keys
 # Get the drive letter (since this cna change from machine to machine, use the below)
