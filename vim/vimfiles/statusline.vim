@@ -1,5 +1,5 @@
 set statusline =%1*\ %f\                                " Filename
-set statusline+=%2*\ %{strftime('%H:%M')}\    " Datetime
+set statusline+=%2*\ %{strftime('%H:%M')}\              " Datetime
 set statusline+=%3*%h%r                                 " Flags
 set statusline+=%9*\ %=\                                " Alignment split
 set statusline+=%4*\ %l,%v\                             " Row,Col

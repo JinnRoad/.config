@@ -22,7 +22,7 @@ set foldtext=FoldText()
 
 " preserve folds between sessions
 augroup remember_folds
-  autocmd!
-  autocmd BufWinLeave,BufWrite * silent! mkview
-  autocmd BufWinEnter * silent! loadview
+    autocmd!
+    autocmd BufWinLeave,BufWrite * silent! mkview
+    autocmd BufWinEnter * silent! loadview
 augroup END

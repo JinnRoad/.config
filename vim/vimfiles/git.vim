@@ -8,7 +8,20 @@ nnoremap \gad   :!git add<cr>
 nnoremap \gd    :!git diff<cr>
 nnoremap \gl    :!git log --graph -10 --pretty=format:'\%Cred\%h\%Creset \%Cgreen\%cs\%Creset \%C(bold blue)\%an\%Creset \%s \%C(yellow)\%D\%Creset' && echo && git status -bsu<cr>
 
-function! GitChanges()
-    let x = system('git status --porcelain &')
-    echo x
+augroup git_changes
+    autocmd!
+    autocmd InsertLeave * call ShowGitChanges(2)
+augroup END
+
+function! ShowGitChanges(tolerance)
+    let changes = len(split(system('git status --porcelain'), '\n'))
+    if changes < a:tolerance
+        hi User9        ctermbg=8
+        hi LineNr       ctermbg=8
+        hi TabLineFill  ctermbg=8 cterm=none
+    else
+        hi User9        ctermbg=1
+        hi LineNr       ctermbg=1
+        hi TabLineFill  ctermbg=1 cterm=none
+    endif
 endfunction
