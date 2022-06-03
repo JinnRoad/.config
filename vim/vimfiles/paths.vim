@@ -17,10 +17,19 @@ nnoremap <c-j> :cn<cr>zz
 nnoremap <c-k> :cp<cr>zz
 
 " Copy directory or path
-command! CopyFileDir  execute 'let @*="' . expand('%:p:h') . '"'
-command! CopyFilePath execute 'let @*="' . expand('%:p')   . '"'
-
+command! CopyDirPath  execute 'let @*="' . TildaPath(expand('%:p:h')) . '"'
+command! CopyFilePath execute 'let @*="' . TildaPath(expand('%:p'))   . '"'
+"/c/Users/user/.config/vim/vimfiles/paths.vim
 " Convert filepaths between unix and windows
+
+function! TildaPath(path)
+    let path = a:path
+    let path = substitute(path, '^/home/' . g:user, '~', '')
+    let path = substitute(path, '^/c/Users/' . g:user, '~', '')
+    let path = substitute(path, '^C:\Users\' . g:user, '~', '')
+    return path
+endfunction
+
 command! ConvertPath call ConvertPath()
 function ConvertPath()
     normal mz0

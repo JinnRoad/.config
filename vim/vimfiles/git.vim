@@ -24,6 +24,7 @@ function! ShowGitChanges(tolerance)
         hi LineNr       ctermbg=1
         hi TabLineFill  ctermbg=1 cterm=none
     endif
+    redraw!
 endfunction
 
 
