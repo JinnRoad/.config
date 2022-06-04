@@ -8,11 +8,3 @@ setlocal colorcolumn=61,121,181 " Mark nth column. Write to the (n-1)th column
 
 " Add word count to status line
 setlocal laststatus=2
-
-setlocal statusline =%1*\ %f\                       " Filename
-setlocal statusline+=%2*\ %{strftime('%H:%M')}\     " Datetime
-setlocal statusline+=%3*%h%r                        " Flags
-setlocal statusline+=%9*\ %=\                       " Alignment split
-setlocal statusline+=%2*\ WC\:%{WordCount()}\        " Word count
-setlocal statusline+=%4*\ %l,%v\                    " Row,Col
-setlocal statusline+=%5*\ (%p%%)                    " Document percentage

@@ -1,8 +1,8 @@
 function! WordCount()
     if has_key(wordcount(),'visual_words')
-        return wordcount().visual_words."/".wordcount().words " count selected words
+        return wordcount().visual_words
     else
-        return wordcount().cursor_words."/".wordcount().words " or shows words 'so far'
+        return wordcount().words
     endif
 endfunction
 
@@ -28,3 +28,13 @@ function! InsertWordCount()
     normal `z
     echo "Word count: " . @z
 endfunction
+
+
+"function! WordCount_()
+"    if has_key(wordcount(),'visual_words')
+"        return wordcount().visual_words."/".wordcount().words " count selected words
+"    else
+"        return wordcount().cursor_words."/".wordcount().words " or shows words 'so far'
+"    endif
+"endfunction
+

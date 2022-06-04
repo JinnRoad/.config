@@ -21,6 +21,7 @@ execute "set directory="	            . g:docsdir . 'backup/vim/swap//'
 execute "set undodir="		            . g:docsdir . 'backup/vim/undo//'
 execute "set viewdir="		            . g:docsdir . 'backup/vim/view//'
 execute "set viminfo+='50,<20,%5,c,n"	. g:docsdir . 'backup/vim/_viminfo'
+
 " '50,<20,%5,c,n
 " #file marks, #lines of register, #buffers, convert encoding, name
 

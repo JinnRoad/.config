@@ -8,16 +8,14 @@ setlocal noexpandtab
 "   30 words -> 180 char
 setlocal colorcolumn=61,121,181 " Mark nth column. Write to the (n-1)th column
 
-nnoremap <buffer> <c-j> "zyy"zpf<tab>lC
-nnoremap <buffer> <c-k> o<tab>1.<tab>
+" Insert list item
+nnoremap <buffer> <space>j "zyy"zpf<tab>lC
+" Insert list subitem
+nnoremap <buffer> <space>k o<tab>1.<tab>
+
+" Open pdf, assuming its in ./pdfs/
+
+nnoremap <buffer> gF :call system('mupdf pdfs/' . expand('%:r') . '.pdf &')<cr>
 
 " Add word count to status line
 setlocal laststatus=2
-
-setlocal statusline =%1*\ %f\                       " Filename
-setlocal statusline+=%2*\ %{strftime('%H:%M')}\     " Datetime
-setlocal statusline+=%3*%h%r                        " Flags
-setlocal statusline+=%9*\ %=\                       " Alignment split
-setlocal statusline+=%2*\ WC:%{WordCount()}\        " Word count
-setlocal statusline+=%4*\ %l,%v\                    " Row,Col
-setlocal statusline+=%5*\ (%p%%)                    " Document percentage
