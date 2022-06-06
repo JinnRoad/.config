@@ -5,12 +5,13 @@ $usb = (Get-WmiObject -Class Win32_LogicalDisk | where DriveType -eq 2).DeviceID
 
 
 # Copy setup files to USB to capture any changes
-cp -force -r ~/.config/windows-setup/ $usb
+cp -force -r ~/.config/windows-setup/* $usb/windows-setup
 
 # Delete config files and directories
 cd ~/
 rm .bash_history,.lesshst,.gitconfig
-rm -r -force .config,.vim,.ssh,apps,docs
+rm -r -force .config,.vim,.ssh,.gnupg,apps,docs
+rm -r -force 'AppData/Roaming/Git CLI'
 
 $driveEject = New-Object -comObject Shell.Application
 $driveEject.Namespace(17).ParseName($usb).InvokeVerb("Eject")
