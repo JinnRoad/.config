@@ -6,7 +6,7 @@
 # Prompt
 #PS1='[\u@\h \W]\$ '  # default (?)
 hline='__________________________________________________'
-PS1='$hline\n\W \$ '
+PS1='\n$hline\n\W \$ '
 
 # Vim movement in shell prompt
 set -o vi
