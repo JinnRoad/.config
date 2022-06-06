@@ -40,8 +40,13 @@ cd $usb
 
 echo ''
 echo 'Decrypt ssh keys then delete gnupg directory'
-git-bash -c "cd $usb ; gpg -d .ssh.tgz.gpg | tar -xzC ~/ ; rm -r ~/.gnupg"
+git-bash -c "cd $usb ; gpg -d .ssh | tar -xzC ~/ ; rm -r ~/.gnupg"
+# to compress and encrypt
+#   tar -czf .ssh | gpg -c > .ssh~
+# then delete .ssh and rename .ssh~ to .ssh
 [console]::beep(180,500)  # Audio signal for input
+pause
+mv '~/.ssh/Github CLI' ~/AppData/Roaming/
 
 echo ''
 echo 'Clone projects from git'
@@ -77,4 +82,3 @@ python -m pip install pyperclip pyautogui bext dicttoxml
 setx PYTHONIOENCODING utf-8
 
 [console]::beep(180,1500)  # Audio signal that process is finished
-exit
