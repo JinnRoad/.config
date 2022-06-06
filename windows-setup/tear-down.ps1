@@ -17,3 +17,4 @@ $driveEject = New-Object -comObject Shell.Application
 $driveEject.Namespace(17).ParseName($usb).InvokeVerb("Eject")
 
 [console]::beep(180,1500)
+exit
