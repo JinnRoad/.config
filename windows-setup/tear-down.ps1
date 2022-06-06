@@ -11,7 +11,7 @@ cp -force -r ~/.config/windows-setup/* $usb/windows-setup
 cd ~/
 rm .bash_history,.lesshst,.gitconfig
 rm -r -force .config,.vim,.ssh,.gnupg,apps,docs
-rm -r -force 'AppData/Roaming/Git CLI'
+rm -r -force 'AppData/Roaming/Github CLI'
 
 $driveEject = New-Object -comObject Shell.Application
 $driveEject.Namespace(17).ParseName($usb).InvokeVerb("Eject")
