@@ -10,8 +10,7 @@ cp -force -r ~/.config/windows-setup/ $usb
 # Delete config files and directories
 cd ~/
 rm .bash_history,.lesshst,.gitconfig
-rm -r -force .config,.vim,.ssh,apps,docs,App
-rm -r -force AppData/Roaming/GitHub*
+rm -r -force .config,.vim,.ssh,apps,docs
 
 $driveEject = New-Object -comObject Shell.Application
 $driveEject.Namespace(17).ParseName($usb).InvokeVerb("Eject")

@@ -11,34 +11,41 @@
 [console]::beep(180,500)  # Audio signal for input
 $user = read-host -p user
 
-# Setup vim backup directories
+echo ''
+echo 'Setup vim backup directories'
 mkdir -force -p ~/docs/backup/vim/backup/
 mkdir -force -p ~/docs/backup/vim/swap/
 mkdir -force -p ~/docs/backup/vim/undo/
 mkdir -force -p ~/docs/backup/vim/view/
 
-# Install scoop
+echo ''
+echo 'Install scoop'
 $env:SCOOP="$HOME/apps/scoop"
 [Environment]::SetEnvironmentVariable('SCOOP', $env:SCOOP, 'User')
 Set-ExecutionPolicy RemoteSigned -scope CurrentUser -Force -Confirm:$false
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 iwr get.scoop.sh -UseBasicParsing | iex
 
-# Install git, gh, and configure user, and decrypt .ssh
+echo ''
+echo 'Install git, gh, and configure user, and decrypt .ssh'
 scoop install git gh
 git config --global user.name $user
 git config --global user.email $user@gmail.com
-git config --global core.excludesfile ~/.config/git/gitignore_global
 
-# Load ssh keys
-# Get the drive letter (since this cna change from machine to machine, use the below)
+echo ''
+echo 'Get USB drive letter'
+# Get the drive letter since this can change from machine to machine
 $usb = (Get-WmiObject -Class Win32_LogicalDisk | where DriveType -eq 2).DeviceID
 cd $usb
-[console]::beep(180,500)  # Audio signal for input
-# Decrypt ssh keys then delete gnupg directory
-git-bash -c 'gpg -d .ssh.tgz.gpg | tar -xzC ~/ ; rm -r ~/.gnupg'
 
-# Clone projects from git
+echo ''
+echo 'Decrypt ssh keys then delete gnupg directory'
+git-bash -c "cd $usb ; gpg -d .ssh.tgz.gpg | tar -xzC ~/ ; rm -r ~/.gnupg"
+[console]::beep(180,500)  # Audio signal for input
+pause
+
+echo ''
+echo 'Clone projects from git'
 #	Git needs to clone to an empty directory
 #	Since scoop installs a .config file already, the below commands merge both directories
 cd ~
@@ -47,20 +54,25 @@ mv .config .config~
 git clone git@github.com:$user/.config.git
 mv .config~/* .config
 rm -r .config~
+cd ~/docs
 
-# Point /etc/*rc files to ~/.config/ (XDG base directory standard)
+echo ''
+echo 'Configure etc rc files to point to .config (XDG base directory standard)'
 'source ~/.config/vim/vimfiles/vimrc'	| Out-File -encoding ascii -NoNewline -Append ~/apps/scoop/apps/git/current/etc/vimrc
 'source ~/.config/bash/bashrc'		| Out-File -encoding ascii -NoNewline -Append ~/apps/scoop/apps/git/current/etc/bash.bashrc
 '$include ~/.config/bash/inputrc'	| Out-File -encoding ascii -NoNewline -Append ~/apps/scoop/apps/git/current/etc/inputrc
 
-# Configure pty used by git-bash
+echo ''
+echo 'Configure pty used by git-bash'
 cp ~/.config/mintty/minttyrc ~/apps/scoop/apps/git/current/etc
 
-# Install other tools
+echo ''
+echo 'Install other tools'
 scoop bucket add extras
 scoop install mupdf sharex
 
-# Install languages
+echo ''
+echo 'Install languages'
 scoop install python sqlite
 python -m pip install pyperclip pyautogui bext dicttoxml
 setx PYTHONIOENCODING utf-8
