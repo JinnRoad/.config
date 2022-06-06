@@ -42,7 +42,6 @@ echo ''
 echo 'Decrypt ssh keys then delete gnupg directory'
 git-bash -c "cd $usb ; gpg -d .ssh.tgz.gpg | tar -xzC ~/ ; rm -r ~/.gnupg"
 [console]::beep(180,500)  # Audio signal for input
-pause
 
 echo ''
 echo 'Clone projects from git'
@@ -78,3 +77,4 @@ python -m pip install pyperclip pyautogui bext dicttoxml
 setx PYTHONIOENCODING utf-8
 
 [console]::beep(180,1500)  # Audio signal that process is finished
+exit
