@@ -24,7 +24,6 @@ augroup terminalcommands
     " Commands to run a file
     autocmd Filetype bqn	    let g:prefix = 'bqn'
     autocmd Filetype forth	    let g:prefix = 'gforth'
-    autocmd Filetype markdown	let g:prefix = 'pandoc'
     autocmd Filetype mysql 	    let g:prefix = 'sqlite3 -init'
     autocmd Filetype python	    let g:prefix = 'python'
     autocmd Filetype sh 	    let g:prefix = 'bash'
@@ -33,7 +32,6 @@ augroup terminalcommands
     autocmd Filetype zig	    let g:prefix = 'zig run'
 
     autocmd Filetype bqn,forth,mysql,python,sh,v,zig let g:body = '%'
-    autocmd Filetype markdown let g:body = '% -s -o pdfs/' . expand('%:t:r') . '.pdf'
     autocmd Filetype vim	let g:body = g:vimfilesdir . 'vimrc'
 
 	" Close terminals
@@ -41,9 +39,9 @@ augroup terminalcommands
 	tnoremap <s-cr> <c-e>:call CloseTerminals()<cr>
 
 	" Run FILE
-	autocmd Filetype mysql,python,sh nnoremap <buffer> <cr> :w<cr>:call Run(g:prefix, g:body, '')<cr>
-	autocmd Filetype markdown nnoremap <buffer> <c-s-cr> :w<cr>:call RunBackground(g:prefix, g:body, '')<cr>
-	autocmd Filetype vim nnoremap <buffer> <cr> :w<cr>:execute g:prefix g:body<cr>
+	autocmd Filetype mysql,python,sh nnoremap <buffer> <cr> :call Run(g:prefix, g:body, '')<cr>
+	autocmd Filetype markdown nnoremap <buffer> <c-s-cr> :call MakePdf()<cr>
+	autocmd Filetype vim nnoremap <buffer> <cr> :execute g:prefix g:body<cr>
 
     " The above <cr> binding for .vim files prevents pressing enter when using
     " the command window (q: ). This is because the above bindings will run
@@ -75,8 +73,13 @@ function! CloseTerminals()
 	endif
 endfunction
 
-function! RunBackground(prefix, body, suffix)
+function! MakePdf()
+    "autocmd Filetype markdown	let g:prefix = 'pandoc'
+    "autocmd Filetype markdown let g:body = '% -s -o pdfs/' . expand('%:t:r') . '.pdf'
     w
-    silent! execute "!" a:prefix a:body a:suffix '&'
+    let md = expand('%')
+    let pdf = 'pdfs/'.expand('%:t:r').'.pdf'
+    let cmd = 'pandoc ' . md . ' -s -o ' .  pdf . ' &'
+    call system(cmd)
     redraw!
 endfunction

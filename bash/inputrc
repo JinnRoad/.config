@@ -1,6 +1,9 @@
 # Put the following in ~/.inputrc
 #   $include ~/.config/bash/inputrc
 
+set completion-query-items 100
+set page-completions on
+
 # Vim-like bindings
 set show-all-if-ambiguous on # Show matching
 "\C-d":complete

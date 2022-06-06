@@ -184,6 +184,7 @@ endfunction
 
 " Toggle relative line numbering from command mode for the purpose of moving
 " or copying by aboslute line number
-"cnoremap <c-L> :set relativenumber!<cr>:<c-p><c-p>
-"cnoremap <c-L> <>
 nnoremap <c-q> :set relativenumber!<cr>
+
+" Collapse one sentence per line into one line per paragraph
+command! LinesToParagraph %s/\([;.,:]\)$\n\([a-zA-Z]\)/\1 \2
