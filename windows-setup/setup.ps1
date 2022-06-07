@@ -11,7 +11,6 @@
 [console]::beep(180,500)  # Audio signal for input
 $user = read-host -p user
 
-<#
 echo ''
 echo '__________________________________________________'
 echo 'Setup vim backup directories'
@@ -28,13 +27,14 @@ $env:SCOOP="$HOME/apps/scoop"
 Set-ExecutionPolicy RemoteSigned -scope CurrentUser -Force -Confirm:$false
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 iwr get.scoop.sh -UseBasicParsing | iex
-#>
+
 echo ''
 echo '__________________________________________________'
 echo 'Install git and configure user, and decrypt .ssh'
 scoop install git
 git config --global user.name $user
 git config --global user.email $user@gmail.com
+git config --global credential.helper 'cache --timeout=7200'
 
 echo ''
 echo '__________________________________________________'
