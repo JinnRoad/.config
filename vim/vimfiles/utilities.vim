@@ -187,4 +187,10 @@ endfunction
 nnoremap <c-q> :set relativenumber!<cr>
 
 " Collapse one sentence per line into one line per paragraph
-command! LinesToParagraph %s/\([;.,:]\)$\n\([a-zA-Z]\)/\1 \2
+command! LinesToParagraph call LinesToParagraph()
+function! LinesToParagraph()
+    normal! mz
+    "let @* = substitute(@*,
+    %s/\([;.,:!]\)$\n\([a-zA-Z]\)/\1 \2
+    normal! gg"*yGu`z
+endfunction
