@@ -190,7 +190,6 @@ nnoremap <c-q> :set relativenumber!<cr>
 command! LinesToParagraph call LinesToParagraph()
 function! LinesToParagraph()
     normal! mz
-    "let @* = substitute(@*,
     %s/\([;.,:!]\)$\n\([a-zA-Z]\)/\1 \2
     normal! gg"*yGu`z
 endfunction
