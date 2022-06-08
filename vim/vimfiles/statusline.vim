@@ -1,10 +1,10 @@
 set statusline=%1*                                  " Empty
-set statusline+=%1*\ %f\                            " Filename
-set statusline+=%9*\ %=\                            " Alignment split
 set statusline+=%2*\ %{strftime('%m-%d\ %H:%M')}\   " Datetime
 set statusline+=%3*\ %l,%v\                         " Row,Col
 set statusline+=%2*\ %p%%\                          " Document percentage
 set statusline+=%2*%r                               " Flags
+set statusline+=%1*\ %f\                            " Filename
+set statusline+=%9*\ %=\                            " Alignment split
 
 hi User1 ctermfg=0 ctermbg=2
 hi User2 ctermfg=0 ctermbg=3
@@ -23,11 +23,11 @@ augroup END
 
 function! StatusLineWC()
     setlocal statusline=%1*                                 " Empty
-    setlocal statusline+=%1*\ %f\                           " Filename
-    setlocal statusline+=%9*\ %=\                           " Alignment split
-    setlocal statusline+=%2*\ WC\ %{WordCount()}\           " Word count
+    setlocal statusline+=%3*\ WC\ %{WordCount()}\           " Word count
     setlocal statusline+=%2*\ %{strftime('%m-%d\ %H:%M')}\  " Datetime
     setlocal statusline+=%4*\ %l,%v\                        " Row,Col
     setlocal statusline+=%5*\ (%p%%)\                       " Document percentage
     setlocal statusline+=%3*%r                              " Flags
+    setlocal statusline+=%1*\ %f\                           " Filename
+    setlocal statusline+=%9*\ %=\                           " Alignment split
 endfunction
