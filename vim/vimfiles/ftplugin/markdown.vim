@@ -19,3 +19,5 @@ nnoremap <buffer> gF :call system('mupdf pdfs/' . expand('%:r') . '.pdf &')<cr>
 
 " Add word count to status line
 setlocal laststatus=2
+
+set spell

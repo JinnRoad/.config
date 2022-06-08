@@ -8,3 +8,6 @@ setlocal colorcolumn=61,121,181 " Mark nth column. Write to the (n-1)th column
 
 " Add word count to status line
 setlocal laststatus=2
+
+set spell
+set spell
