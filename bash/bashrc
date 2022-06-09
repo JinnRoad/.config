@@ -90,3 +90,13 @@ elif [[ "$OSTYPE" == "msys" ]]; then
 else
    	echo Bash has not been configured for this OS.
 fi
+
+# completion
+alias clone='gh repo clone'
+GIT_REPOS=$(gh repo ls | grep '[public|private]' | sed 's/\(public\|private\).*$//' | xargs)
+_clone()
+{
+    local cur=${COMP_WORDS[COMP_CWORD]}
+    COMPREPLY=( $(compgen -W "$GIT_REPOS" -- $cur) )
+}
+complete -F _clone clone
