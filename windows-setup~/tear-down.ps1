@@ -12,7 +12,6 @@ cd ~/
 rm .bash_history,.lesshst,.gitconfig
 rm -r -force .config,.vim,.ssh,.gnupg,apps,docs
 rm -r -force 'AppData/Roaming/Github CLI'
-rm -r -force '/tmp/ssh*'
 
 $driveEject = New-Object -comObject Shell.Application
 $driveEject.Namespace(17).ParseName($usb).InvokeVerb("Eject")
