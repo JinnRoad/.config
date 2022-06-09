@@ -20,10 +20,23 @@ bind -m vi-insert 'Control-l: clear-screen'  # ^L to clear screen in vim insert 
 bind '"\t":menu-complete'  # Tab to cycle options
 bind 'set completion-ignore-case on'  # Ignore completion case
 
+# Git
+eval "$(gh completion -s bash)" # autocomplete for gh, GitHub's CLI.
+alias sl='eval `ssh-agent` ; ssh-add' # store ssh keys
+alias sr='rm -rf /tmp/ssh*' # remove ssh keys
+alias gs='git status -bsu'
+alias ga='git add . && gl && gs' # Same as git add -A in git version 2.X
+alias gc='git commit -v'
+alias gp='git push'
+alias gac='git add . && git commit -v && gl'
+alias gacp='git add . && gc && gp && gl'
+alias gad='git add'
+alias gd='git diff'
+alias gl="git log --graph -10 --pretty=format:'%Cred%h%Creset %Cgreen%cs%Creset %C(bold blue)%an%Creset %s %C(yellow)%D%Creset'"
 
 # Aliases
 
-# Program
+# Programs
 alias ls='ls --color=auto'
 alias ll='ls -Al --color=auto'
 alias firefox='firefox --private-window'
@@ -36,18 +49,6 @@ alias sob='source ~/.config/bash/bashrc && echo Source bashrc'
 alias con='cd ~/.config'
 alias docs='cd ~/docs'
 alias setup='vim ~/docs/tech/linux/setup.md'
-
-## Git
-eval "$(gh completion -s bash)" # autocomplete for gh, GitHub's CLI.
-alias gs='git status -bsu'
-alias ga='git add . && gl && gs' # Same as git add -A in git version 2.X
-alias gc='git commit -v'
-alias gp='git push'
-alias gac='git add . && git commit -v && gl'
-alias gacp='git add . && gc && gp && gl'
-alias gad='git add'
-alias gd='git diff'
-alias gl="git log --graph -10 --pretty=format:'%Cred%h%Creset %Cgreen%cs%Creset %C(bold blue)%an%Creset %s %C(yellow)%D%Creset'"
 
 # Directory marks
 #   mark NAME
