@@ -7,11 +7,12 @@
 #   In powershell:  USBDRIVE/windows-setup/tear-down.ps1
 
 ./get-usb-name.ps1
-#./get-user.ps1
+./get-user.ps1
 ./make-vim-backup-dirs.ps1
 ./install-scoop.ps1
 ./install-git.ps1
 ./load-keys.ps1
+
 
 # store ssh password in /tmp/ssh* so that the password isn't needed on every git push
 # this must be done from within git-bash as powershell sometimes cannot run ssh-agent
