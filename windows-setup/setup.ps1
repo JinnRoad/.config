@@ -7,7 +7,7 @@
 #   In powershell:  USBDRIVE/windows-setup/tear-down.ps1
 
 ./get-usb-name.ps1
-./get-user.ps1
+#./get-user.ps1  # Username currently hard-coded
 ./make-vim-backup-dirs.ps1
 ./install-scoop.ps1
 ./install-git.ps1

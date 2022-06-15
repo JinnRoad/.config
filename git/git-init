@@ -1,0 +1,17 @@
+# initialize git repo
+
+read -p 'private/public: ' privacy
+
+git init
+
+# run: gh repo create --source . --private/public
+bash -c "gh repo create --source . --$privacy"
+
+# run: git remote set-url origin git@github.com:User/repo.git
+bash -c "git remote set-url `git remote -v | head -1 | sed 's/ (.*$//'`"
+
+# Make repo and push
+touch README.md
+git add .
+git commit -m 'Make repo'
+git push -u origin master

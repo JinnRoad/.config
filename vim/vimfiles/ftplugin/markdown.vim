@@ -21,5 +21,4 @@ nnoremap <buffer> gF :call system('mupdf pdfs/' . expand('%:r') . '.pdf &')<cr>
 setlocal laststatus=2
 
 nnoremap <buffer> [s [s1z=
-
-
+setlocal spell
