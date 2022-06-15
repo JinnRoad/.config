@@ -34,6 +34,7 @@ alias gad='git add'
 alias gd='git diff'
 alias gl="git log --graph -10 --pretty=format:'%Cred%h%Creset %Cgreen%cs%Creset %C(bold blue)%an%Creset %s %C(yellow)%D%Creset'"
 alias gi="bash ~/.config/git/git-init"
+alias gr="gh repo list"
 
 # Aliases
 
