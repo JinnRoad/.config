@@ -8,6 +8,6 @@ FontSmoothing=full
 BoldAsColour=no
 BoldAsFont=no
 AllowBlinking=no
-BellType=0
+BellType=1
 Scrollbar=none
 Window=max
