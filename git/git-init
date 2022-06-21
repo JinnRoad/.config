@@ -11,7 +11,8 @@ bash -c "gh repo create --source . --$privacy"
 bash -c "git remote set-url `git remote -v | head -1 | sed 's/ (.*$//'`"
 
 # Make repo and push
-touch README.md
+touch EMPTY~
 git add .
 git commit -m 'Make repo'
 git push -u origin master
+rm EMPTY~
