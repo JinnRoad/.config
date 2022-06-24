@@ -80,6 +80,7 @@ function! MakePdf()
     let md = expand('%')
     let pdf = 'pdfs/'.expand('%:t:r').'.pdf'
     let cmd = 'pandoc ' . md . ' -s -o ' .  pdf . ' &'
+    let @c = cmd[:-3]
     call system(cmd)
     redraw!
 endfunction
