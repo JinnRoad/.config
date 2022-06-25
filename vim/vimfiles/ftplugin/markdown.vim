@@ -20,5 +20,9 @@ nnoremap <buffer> gF :call system('mupdf pdfs/' . expand('%:r') . '.pdf &')<cr>
 " Add word count to status line
 setlocal laststatus=2
 
-nnoremap <buffer> [s [s1z=
+" Turn on spell check
 setlocal spell
+" Turn off sentence-initial capitalization
+setlocal spellcapcheck=
+" Map spell correction
+nnoremap <buffer> [s [s1z=
