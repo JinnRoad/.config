@@ -1,5 +1,13 @@
 setlocal noexpandtab
 
+" Add item by urgency
+"   0   must do
+"   1   nice to do
+nnoremap <buffer> <leader>0 gg/^0<cr>zzO0	<esc>A
+nnoremap <buffer> <leader>1 gg/^1<cr>zzO1	<esc>A
+nnoremap <buffer> <leader>2 gg/^2<cr>zzO2	<esc>A
+
+function Deprecated()
 " Add to do item
 " current errand work home
 nnoremap <buffer> <leader>c gg/^curr<cr>zzOcurr	<esc>A
@@ -36,3 +44,4 @@ nmap <buffer> <leader>id mz0wiid;	<esc>`z8l
 
 " Use item to create information entry
 nmap <buffer> <leader>n yyGkpIdt;<tab>2wC
+endfunction
