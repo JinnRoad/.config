@@ -53,7 +53,7 @@ alias bashrc='vim ~/.config/bash/bashrc'
 alias sob='source ~/.config/bash/bashrc && echo Source bashrc'
 alias con='cd ~/.config'
 alias docs='cd ~/docs'
-alias setup='vim ~/docs/tech/linux/setup.md'
+alias todo='vim ~/docs/current/to-do.txt'
 
 # Directory marks
 #   mark NAME
@@ -105,5 +105,3 @@ _clone()
     COMPREPLY=( $(compgen -W "$GIT_REPOS" -- $cur) )
 }
 complete -F _clone clone
-
-
