@@ -1,11 +1,27 @@
 setlocal noexpandtab
 
 " Add item by urgency
-"   0   must do
-"   1   nice to do
-nnoremap <buffer> <leader>0 gg/^0<cr>zzO0	<esc>A
-nnoremap <buffer> <leader>1 gg/^1<cr>zzO1	<esc>A
-nnoremap <buffer> <leader>2 gg/^2<cr>zzO2	<esc>A
+" Move to relevant section and add item
+"   0   three MAX per day, high priority
+"   1   must do: appointments, critical tasks, etc
+"   2   want to do
+"   3   never will do
+nnoremap <buffer> <leader>0 gg/^0<cr>zzo0	<esc>A
+nnoremap <buffer> <leader>1 gg/^1<cr>zzo1	<esc>A
+nnoremap <buffer> <leader>2 gg/^2<cr>zzo2	<esc>A
+nnoremap <buffer> <leader>3 gg/^3<cr>zzo3	<esc>A
+
+" Mark item as done
+" Move line to end of file then ad datetime
+nmap <buffer> <leader>d "zddG"zpIdt;<tab>zz
+
+" Move to start/end of TODO list
+nnoremap <buffer> <leader>k 0"zyiw"xddgg/^z<cr>"xpkzz
+nnoremap <buffer> <leader>j 0"zyiw"xdd/^\(z\)\@!<cr>"xPzz
+nnoremap <buffer> <leader>x "zdd}k"zpzz
+
+
+" DEPRECATED ------------------------------
 
 function Deprecated()
 " Add to do item
@@ -21,16 +37,8 @@ nnoremap <buffer> <leader>E gg/^erra<cr>zz
 nnoremap <buffer> <leader>H gg/^home<cr>zz
 nnoremap <buffer> <leader>W gg/^work<cr>zz
 
-" Move to start/end of TODO list
-nnoremap <buffer> <leader>k 0"zyiw"xddgg/^z<cr>"xPzz
-nnoremap <buffer> <leader>j 0"zyiw"xdd/^\(z\)\@!<cr>"xPzz
-nnoremap <buffer> <leader>x "zdd}k"zpzz
-
 " Move to later
 nnoremap <buffer> <leader>l "zdd/# LATER<cr>"zpzz
-
-" Mark item as done
-nmap <buffer> <leader>d "zddGk"zpIdt;<tab>zz
 
 " Sort current paragraph
 nnoremap <buffer> <leader>s 0"zy50lvip:'<,'>sort<cr>{/z<cr>zz:set nohlsearch<cr>
