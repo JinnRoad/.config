@@ -98,7 +98,7 @@ fi
 
 # completion
 alias clone='gh repo clone'
-GIT_REPOS=$(gh repo ls | grep '[public|private]' | sed 's/\(public\|private\).*$//' | xargs)
+GIT_REPOS=$(gh repo ls | grep '[public|private]' | sed 's/\(public\|private\).*$//' | sed 's/.*\///' | xargs)
 _clone()
 {
     local cur=${COMP_WORDS[COMP_CWORD]}
