@@ -8,9 +8,6 @@
 hline='__________________________________________________'
 PS1='\n$hline \W\n\$ '
 
-# Prompt for ssh key
-eval `ssh-agent` ; ssh-add
-
 # Vim movement in shell prompt
 set -o vi
 bind -m vi-command 'Control-l: clear-screen'  # ^L to clear screen in vim normal mode
@@ -105,3 +102,6 @@ _clone()
     COMPREPLY=( $(compgen -W "$GIT_REPOS" -- $cur) )
 }
 complete -F _clone clone
+
+# Prompt for ssh key
+eval `ssh-agent` ; ssh-add
