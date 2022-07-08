@@ -103,5 +103,7 @@ _clone()
 }
 complete -F _clone clone
 
+cd
+
 # Prompt for ssh key
 eval `ssh-agent` ; ssh-add
