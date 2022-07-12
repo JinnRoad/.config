@@ -103,6 +103,8 @@ _clone()
 }
 complete -F _clone clone
 
+PATH=$PATH:~/.config/scripts
+
 cd
 
 # Prompt for ssh key

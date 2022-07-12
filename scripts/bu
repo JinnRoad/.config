@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# TODO filename.txt -> filename-DATETIME.txt
+
+# Backup a file or directory
+
+# If given no arguments, the directory is backed up to ../directoryname.~DATETIME~
+# If given file that exists, file is backed up to filename.~DATETIME~
+# If given a file that does not exist, the file is created.
+
+backup_extension=.~`date +%Y_%m_%d_%H%M`~
+
+# If no arguments given, then backup directory and exit
+if (( $# == 0 )); then
+    destination="$PWD$backup_extension"
+    cp -rf "$PWD" "$destination" && echo "../`basename $PWD` -> ../`basename $destination`"
+    exit 0
+fi
+
+# Otherwise, deal with single file
+for file in "$@"; do
+    # If file exists, backup
+    if [ -f "$file" ]; then
+        destination="$file$backup_extension"
+        cp -rf "$file" "$destination" && echo "$file -> $destination"
+    # Else create the file
+    else
+        touch "$file"
+        echo "created '$file'"
+    fi
+done
