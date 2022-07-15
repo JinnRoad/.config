@@ -169,19 +169,6 @@ function! ShuffleLines() range
 endfunction
 
 
-" Creates a buffer with
-" Doesn't work yet
-command! Rename call Rename()
-function! Rename()
-    e! rename.txt
-    r!echo *.tif
-    s/ /\r
-    normal ggddvip$ygvA renamed/$p
-    w
-    let @q = :echo '0y$:!cp "'
-    echo "Make changes, select all, then :norm @q"
-endfunction
-
 " Toggle relative line numbering from command mode for the purpose of moving
 " or copying by aboslute line number
 nnoremap <c-q> :set relativenumber!<cr>
@@ -192,4 +179,12 @@ function! LinesToParagraph()
     normal! mz
     %s/\([;.,:!]\)$\n\([a-zA-Z]\)/\1 \2
     normal! gg"*yGu`z
+endfunction
+
+
+" Create list of pages
+command! -nargs=1 Pages call Pages(<args>)
+function! Pages(pages)
+    execute "r!echo {01.." . a:pages . "}.01"
+    s/ /\r
 endfunction
