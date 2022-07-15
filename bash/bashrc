@@ -103,12 +103,7 @@ _clone()
 }
 complete -F _clone clone
 
-<<<<<<< HEAD
-=======
 PATH=$PATH:~/.config/scripts
 
-cd
-
->>>>>>> d1fcc8cff8df30e946008609ddbec2e7ef330135
 # Prompt for ssh key
 eval `ssh-agent` ; ssh-add
