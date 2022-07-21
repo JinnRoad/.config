@@ -11,6 +11,9 @@ set autowriteall  " Autosave on buffer switch
 set number
 set relativenumber
 set nowrap
+"set encoding=utf-8
+"set fileencoding=utf-8
+"set fileencodings=utf-8
 
 "" Return string based on the OS.
 "function OsBasedStr()
@@ -45,6 +48,7 @@ execute "set rtp+=" . g:vimfilesdir
 
 "scriptnames
 let files = [
+    \ 'arguments.vim',
     \ 'cosmetics.vim',
     \ 'folds.vim',
     \ 'ftdetect.vim',
