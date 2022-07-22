@@ -11,9 +11,9 @@ set autowriteall  " Autosave on buffer switch
 set number
 set relativenumber
 set nowrap
-"set encoding=utf-8
-"set fileencoding=utf-8
-"set fileencodings=utf-8
+set encoding=utf-8
+set fileencoding=utf-8
+set fileencodings=utf-8
 
 "" Return string based on the OS.
 "function OsBasedStr()

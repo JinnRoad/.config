@@ -105,5 +105,10 @@ complete -F _clone clone
 
 PATH=$PATH:~/.config/scripts
 
+cd ~/current/english2/notes/
+pwd
+cd ~/docs/school/2021-09/english-102-composition-2/materials/part-1/texts/
+pwd
+
 # Prompt for ssh key
 eval `ssh-agent` ; ssh-add
