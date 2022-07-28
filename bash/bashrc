@@ -1,12 +1,14 @@
 # Place the follwing in ~/.bashrc
 # source ~/.config/bash/bashrc
 
-# TODO 20220217213212  bash change prompt to show git branch
+# TODO EmQBQ12C  bash change prompt to show git branch
+# TODO EmQBQ12P  cut and paste commands
 
 # Prompt
 #PS1='[\u@\h \W]\$ '  # default (?)
 hline='__________________________________________________'
-PS1='\n$hline \W\n\$ '
+#PS1='\n$hline \W\n\$ '
+PS1='\$ '
 
 # Vim movement in shell prompt
 set -o vi
@@ -28,6 +30,7 @@ alias gs='git status -bsu'
 alias ga='git add . && gl && gs' # Same as git add -A in git version 2.X
 alias gc='git commit -v'
 alias gp='git push'
+alias gu='git pull'
 alias gac='git add . && git commit -v && gl'
 alias gacp='git add . && gc && gp && gl'
 alias gad='git add'
